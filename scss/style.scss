@@ -1,0 +1,119 @@
+//Обнуление
+@import "nullstyle.scss";
+//-----
+
+$body_color: #e0fbfc;
+$block_color: #98c1d9;
+$font_color: #293241;
+ 
+
+%mainBlocksStyle{
+    max-width: 800px;
+    background-color: $block_color;
+    margin: 2px auto;
+    padding: 20px;
+}
+%shadow{
+    box-shadow:  0 0 10px 5px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 0 10px  5px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 0 10px 5px rgba(0,0,0,0.3);
+    -o-box-shadow: 0 0 10px 5px rgba(0,0,0,0.3);
+}
+
+
+@mixin fontstyle($fontSize, $color){
+    font-size: $fontSize;
+    color: $color;
+}
+
+
+body{
+    background-color: $body_color;
+}
+
+
+.header{
+    text-align: center;
+    @extend %mainBlocksStyle;
+    @include fontstyle(20px, $font_color);
+}
+.header h1{
+    @include fontstyle(35px, $font_color);
+    padding-bottom: 5px;
+    font-weight: 700;
+}
+.header blockquote{
+    padding: 15px;
+    font-style: italic;
+}
+.header blockquote::before{
+    content: '«';
+}
+.header blockquote::after{
+    content: '»';
+}
+.header__content{
+    padding: 10px 0 15px 0;
+    text-align: justify;
+    text-indent: 50px;
+}
+.header__photo{
+    @extend %shadow;
+    background-image: url('../img/photo.jpg');
+    background-position: -100px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+.main{
+    @extend %mainBlocksStyle;
+    @include fontstyle(20px, $font_color);
+}
+.main h2{
+    @include fontstyle(35px, $font_color);
+    text-align: center;
+    font-weight: 700;
+    padding-bottom: 25px;
+}
+.main li{
+    list-style: none;
+}
+.main li p:first-child{
+    text-align: center;
+    font-weight: 700;
+}
+.main li p:nth-child(2n), p:last-child{
+    text-align: justify;
+    padding-bottom: 20px;
+    text-indent: 50px;
+}
+.main ul{
+    padding-bottom: 30px;
+}
+.main__wikiButton{
+    @include fontstyle(20px, $body_color);
+    max-width: 400px;
+    max-height: 50px;
+    line-height: 45px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #ee6c4d;
+    background-color: $font_color;
+    border-radius: 10px;
+}
+.main__wikiButton:hover, .main__wikiButton:active{
+    @extend %shadow;
+}
+
+
+.footer{
+    @extend %mainBlocksStyle;   
+}
+.footer p{
+    text-align: center;
+    padding: 0;
+}
